@@ -3,6 +3,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
 
+# All runtime config comes from the UNIX environment
+# but we use dotenv to store that in files for
+# development and testing
+gem 'dotenv-rails', groups: [:development, :test]
+
+# Brakeman analyzes our code
+# for security vulnerabilities
+gem 'brakeman'
+
+# bundler-audit enables bundle audit which analyzes our
+# dependencies for known vulnerabilities
+gem 'bundler-audit'
+
+# lograge changed Rails' logging to a more
+# traditional one-line-per-event format
+gem 'lograge'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6'
 # Use postgresql as the database for Active Record
