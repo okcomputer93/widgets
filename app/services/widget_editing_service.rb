@@ -3,16 +3,12 @@ class WidgetEditingService
     widget.update(widget_params)
 
     if widget.valid?
-      EditedWidgetJob.perform_later(widget.id)
+      # create the InventoryReport
+      # check the manufacturer to see who notify
+      # trigger the AdminMailer to notify whoever
+      # should be notified
     end
 
     widget
-  end
-
-  def post_widget_edit(widget)
-    # create the InventoryReport
-    # check the manufacturer to see who to notify
-    # trigger the AdminMailer to notify whoever
-    # should be notified
   end
 end
