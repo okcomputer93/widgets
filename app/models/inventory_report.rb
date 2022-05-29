@@ -1,2 +1,0 @@
-class InventoryReport < ApplicationRecord
-end
