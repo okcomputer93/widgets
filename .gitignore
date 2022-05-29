@@ -35,6 +35,9 @@
 yarn-debug.log*
 .yarn-integrity
 
+# IDE configs
+.idea
+
 # The .env file is used for both dev and test
 # and creates more problems than it solves
 .env.*
