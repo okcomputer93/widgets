@@ -11,4 +11,4 @@
   out of <%= @widget.manufacturer.address.country %>
 </h3>
 
-<%= render partial: "rating", locals: { widget: @widget, suppress_cta: true } %>
+<%= widget_rating_component(@widget) %>
