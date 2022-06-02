@@ -21,5 +21,12 @@ class WidgetsController < ApplicationController
       manufacturer: manufacturer,
       name: "Widget #{params[:id]}"
     )
+    def @widget.widget_id
+      if self.id.to_s.length < 3
+        self.id.to_s
+      else
+        self.id.to_s[0..-3] + "." + self.id.to_s[-2..-1]
+      end
+    end
   end
 end
