@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :widgets, only: [:show, :index]
   resources :widget_ratings, only: [:create]
 
+  if Rails.env.development?
+    resources :design_system_docs, only: [:index]
+  end
   # Don't
   get 'manufacturer/:id', to: 'manufacturers#show'
 
