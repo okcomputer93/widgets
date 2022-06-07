@@ -6,6 +6,7 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
+import widget_ratings from "widget_ratings"
 import "channels"
 
 Rails.start()
@@ -19,3 +20,5 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 ActiveStorage.start()
+
+widget_ratings.start(window)
