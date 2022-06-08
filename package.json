@@ -13,6 +13,18 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0",
+    "jsdom": "^19.0.0",
     "webpack-dev-server": "^3"
+  },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
+    ]
   }
 }
