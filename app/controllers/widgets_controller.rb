@@ -1,7 +1,7 @@
 class WidgetsController < ApplicationController
   def new
     @widget = Widget.new
-    @manufacturer = Manufacturer.all
+    @manufacturers = Manufacturer.all
   end
 
   def create
