@@ -1,4 +1,13 @@
 class WidgetsController < ApplicationController
+  def new
+    @widget = Widget.new
+    @manufacturer = Manufacturer.all
+  end
+
+  def create
+    render plain: "Thanks"
+  end
+
   def index
     @widgets = [
       OpenStruct.new(id: 1234, name: 'Stembolt'),
