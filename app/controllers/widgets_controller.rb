@@ -1,6 +1,9 @@
 class WidgetsController < ApplicationController
   def new
     @widget = Widget.new
+    @widget.errors.add(:name, :blank)
+    @widget.errors.add(:manufacturer_id, :blank)
+    @widget.errors.add(:price_cents, :not_a_number)
     @manufacturers = Manufacturer.all
   end
 
