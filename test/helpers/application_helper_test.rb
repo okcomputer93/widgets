@@ -18,7 +18,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "widget_rating_component with CTA" do
-    widget = OpenStruct.new(id: 1234)
+    widget = FactoryBot.create(:widget)
     rendered_component = widget_rating_component(
       widget,
       suppress_cta: false
@@ -28,7 +28,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "widget_rating_component without CTA" do
-    widget = OpenStruct.new(id: 1234)
+    widget = FactoryBot.create(:widget)
     rendered_component = widget_rating_component(
       widget,
       suppress_cta: true

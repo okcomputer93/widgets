@@ -19,6 +19,7 @@ class CreateWidgetTest < ApplicationSystemTestCase
 
     assert_selector "[data-testid='widget-name']",
                     text: "Stembolt"
+    assert_equal 123_00, Widget.first.price_cents
   end
 
   test "we can see validation errors" do

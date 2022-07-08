@@ -3,6 +3,9 @@ require "application_system_test_case"
 class ViewWidgetTest < ApplicationSystemTestCase
   # You should not assert every piece of content and markup on the page
   test "we can see a lost of widgets and choose one to view" do
+    FactoryBot.create(:widget, name: "Flux Capacitor")
+    stembolt = FactoryBot.create(:widget, name: "Stembolt")
+    stembolt.update!(id: 1234)
     visit widgets_path
 
     widget_name = "stembolt"
