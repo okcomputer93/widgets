@@ -20,6 +20,9 @@ gem 'bundler-audit'
 # traditional one-line-per-event format
 gem 'lograge'
 
+# Sidekiq handles background jobs
+gem "sidekiq"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6'
 # Use postgresql as the database for Active Record
@@ -49,6 +52,9 @@ group :development, :test do
   # We use Factory Bot in place of fixtures
   # to generate realistic test data
   gem "factory_bot_rails"
+
+  # Foreman runs all processes for local development
+  gem "foreman"
 
   # We use Faker to generate values for attributes
   # in each factory

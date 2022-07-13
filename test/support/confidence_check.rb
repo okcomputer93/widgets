@@ -12,7 +12,7 @@ module TestSupport
                :result_code,
                :result_label,
                :backtrace_locations,
-               :cause, to: @minitest_assertion
+               :cause, to: :minitest_assertion
     end
 
     # Used to indicate assertions that give confidence that

@@ -9,15 +9,19 @@ class WidgetCreator
       return Result.new(created: false, widget: widget)
     end
 
+    PostWidgetCreationJob.perform_async(widget.id)
+    Result.new(created: widget.valid?, widget: widget)
+  end
+
+  def post_widget_creation_job(widget)
     if widget.price_cents > 7_500_00
       FinanceMailer.high_priced_widget(widget).deliver_now
     end
 
     if widget.manufacturer.created_at.after?(60.days.ago)
-      AdminMailer.new_widget_from_new_manufacturer(widget).deliver_now
+      AdminMailer.new_widget_from_new_manufacturer(widget).
+        deliver_now
     end
-
-    Result.new(created: widget.valid?, widget: widget)
   end
 
   class Result
