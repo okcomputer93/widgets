@@ -34,4 +34,12 @@ class Widget < ApplicationRecord
       last_two: id_as_string[-2..-1]
     }
   end
+
+  def as_json(options = {})
+    options[:method] ||= [ :user_facing_identifier ]
+    options[:except] ||= [ :widget_status_id ]
+    options[:include] ||= [ :widget_status ]
+
+    super(options)
+  end
 end
