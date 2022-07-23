@@ -1,6 +1,27 @@
 #!/usr/bin/env ruby
 
 def setup
+  if ENV["CI"] == "true"
+    log "Running in CI environment"
+
+    log "Creating .env.development.local"
+    File.open(".env.development.local", "w") do |file|
+      file.puts "REDIS_URL=redis://ci-redis:3456/1"
+    end
+
+    log "Creating .env.test.local"
+    File.open(".env.test.local", "w") do |file|
+      file.puts "REDIS_URL=redis://ci-redis:3456/2"
+    end
+
+  elsif ENV["CI"] != nil
+    # Detect if what we believe to be true about the CI env var
+    # is, in fact, still the case
+    fail "Problem: CI is set to #{ENV['ci']}, but we expect either 'true' or nil"
+  else
+    log "Assuming we are running in a local development environment"
+  end
+
   log "Installing gems"
   # Only do bundle install if the much-faster
   # bundle check indicated we need to
