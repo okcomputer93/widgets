@@ -1,4 +1,8 @@
+require 'logging/logs'
+
 class WidgetCreator
+  include Logging::Logs
+
   def create_widget(widget)
     # Our code assumes "Fresh" is in the database, and if it's not,
     # we want it to raise an exception, not return nil
@@ -9,6 +13,7 @@ class WidgetCreator
       return Result.new(created: false, widget: widget)
     end
 
+    log "Widget #{widget.id} is valid. Queueing jobs"
     HighPriceWidgetCheckJob.perform_async(widget.id, widget.price_cents)
     WidgetFromNewManufacturerCheckJob.perform_async(widget.id, widget.manufacturer.created_at)
     Result.new(created: widget.valid?, widget: widget)

@@ -5,4 +5,10 @@ Rails.application.configure do
   else
     config.lograge.enabled = false
   end
+
+  config.lograge.custom_options = lambda do |event|
+    {
+      request_id: event.payload[:request_id]
+    }
+  end
 end
